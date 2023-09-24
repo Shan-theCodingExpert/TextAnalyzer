@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views
+from . import views    # to connect views to this page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    path('', views.index, name='index'),  #'' => in homepage // views.index =>it will go to view named file where he will rin index function 
+                                           #// name='index' => given a name to acces this easily as path name may be very big and comple like 'nudcbdvwvduwvcyugndoudwhmougducygbdwycgdwuchduonncg8ytdfcdnc dgc'
+                                           # it will difficult to acces through path but easy to acces through name
     path('analyze', views.analyze, name='analyze'),
     path('about', views.about, name='about')
 

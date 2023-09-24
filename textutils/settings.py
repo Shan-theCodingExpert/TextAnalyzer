@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e_t)mplh&350&v&21hc52s*!3035lz$pwb^tg1a-7p+*_k=glo'
+SECRET_KEY = 'e_t)mplh&350&v&21hc52s*!3035lz$pwb^tg1a-7p+*_k=glo'   #not to be shared with any
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True     ## it marked true while we are developing site so if there will som error it will help to know where is error if we will make it false it will then only show error 404
 
 ALLOWED_HOSTS = []
 
@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC'  # it is time zone we can change it also
 
 USE_I18N = True
 

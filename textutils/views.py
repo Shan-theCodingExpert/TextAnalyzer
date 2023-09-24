@@ -1,18 +1,19 @@
 # I have created this file - Harry
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render # to use template file
 
 
-def index(request):
-    return render(request, 'index.html')
+
+def index(request):  # def is ude to define function  it takes argument 'request'
+    return render(request, 'index.html')  # render used argument 1. request  2. id file name we want  i.e. index.html here
 
 
-def analyze(request):
+def analyze(request):  #analyze is also a function
     #Get the text
-    djtext = request.POST.get('text', 'default')
+    djtext = request.POST.get('text', 'default')     # to get the text putted in text form at frontend
 
     # Check checkbox values
-    removepunc = request.POST.get('removepunc', 'off')
+    removepunc = request.POST.get('removepunc', 'off')        # removepunc variable is storing the checkbox value, if checkbox is not marked it will store 2nd argument i.e. off
     fullcaps = request.POST.get('fullcaps', 'off')
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
@@ -20,13 +21,13 @@ def analyze(request):
 
     #Check which checkbox is on
     if removepunc == "on":
-        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-        analyzed = ""
-        for char in djtext:
-            if char not in punctuations:
-                analyzed = analyzed + char
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''   # we stored al types of punctuation in punctuation variable
+        analyzed = ""                                       # declared a string analyzed
+        for char in djtext:                                 # iterating char in djtext
+            if char not in punctuations:                    # checking if char not in punctuation
+                analyzed = analyzed + char                  # then add it in analyzed
 
-        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
+        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}  #params is a dict which store something// we will use it in analyze.html.in template file
         djtext = analyzed
 
     if(fullcaps=="on"):
@@ -72,9 +73,9 @@ def analyze(request):
 
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+        return HttpResponse("please select any operation and try again")  # HttpResponse is used to return as to return this we have no html file in template created so we can't use render
 
-    return render(request, 'analyze.html', params)
+    return render(request, 'analyze.html', params)   # we are having analyze,html were we need this param dictionary so we used here render to acces html file in template
 
 def about(request):
     return render(request, 'about.html')
